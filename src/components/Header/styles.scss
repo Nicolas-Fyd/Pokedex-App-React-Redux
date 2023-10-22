@@ -1,0 +1,18 @@
+@use 'src/styles/vars';
+
+.header {
+  height: 10vh;
+  background-color: vars.$lightColor;
+  display: flex;
+  justify-content: space-between;
+
+  .form {
+    display: flex;
+    margin: auto;
+    margin-right: 2rem;
+
+    .login {
+      margin-right: 1rem;
+    }
+  }
+}

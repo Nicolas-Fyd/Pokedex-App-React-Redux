@@ -1,10 +1,12 @@
-import logo from 'src/assets/logo.png';
+import Header from '../Header';
+import Home from '../Home';
 import './styles.scss';
 
 function App() {
   return (
     <div className="app">
-      <img src={logo} alt="react logo" />
+      <Header />
+      <Home />
     </div>
   );
 }

@@ -1,9 +1,9 @@
-.app {
-  width: 500px;
-  margin: 1em auto;
-  text-align: center;
-}
+@use 'src/styles/vars';
 
-.app img {
-  max-width: 100px;
+.app {
+  width: 100vw;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100vh;
+  background-color: vars.$mainColor;
 }
