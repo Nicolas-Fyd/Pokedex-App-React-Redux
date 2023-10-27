@@ -1,15 +1,21 @@
 import './styles.scss';
 
-function Pokemon() {
-
-  const typeStyle = { backgroundColor: '#f0f' }
-
+function Pokemon({ ...pokemon }) {
   return (
     <div className="pokemon">
-      <img className="pokemon-img" src="https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/001.png" alt="Bulbizarre" />
-      <div className="pokemon-name">#1 Bulbizarre</div>
-      <a className="pokemon-type" style={typeStyle}>Grass</a>
-      <a className="pokemon-type" style={typeStyle}>Poison</a>
+      <img className="pokemon-img" src={pokemon.image} alt="Bulbizarre" />
+      <div className="pokemon-name">#{pokemon.id } {pokemon.name}</div>
+      <div className="pokemon-types">
+        {pokemon.types.map((type) => (
+          <a
+            key={type.color}
+            className="pokemon-type"
+            style={{ backgroundColor: type.color }}
+          >
+            {type.name}
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
