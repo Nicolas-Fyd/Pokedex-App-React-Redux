@@ -1,7 +1,8 @@
-import { SAVE_POKEMONS } from '../actions/pokemon';
+import { CHANGE_FILTER_FIELD, SAVE_FILTER_FIELD, SAVE_POKEMONS } from '../actions/pokemon';
 
 export const initialState = {
   pokemons: [],
+  pokemonFilterName: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -10,6 +11,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         pokemons: action.pokemons,
+      };
+    case CHANGE_FILTER_FIELD:
+      return {
+        ...state,
+        pokemonFilterName: action.newValue,
       };
     default:
       return state;
