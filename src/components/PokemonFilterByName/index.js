@@ -4,8 +4,9 @@ function PokemonFilterByName({ filter, changeField }) {
   return (
     <div>
       <input
+        className="filter"
         type="text"
-        placeholder="Filtrer les données"
+        placeholder="Filtrer les pokémons ..."
         value={filter}
         onChange={(event) => {
           event.preventDefault();
