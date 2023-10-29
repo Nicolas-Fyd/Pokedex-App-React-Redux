@@ -1,10 +1,16 @@
+import PropTypes from 'prop-types';
 import './styles.scss';
 
-function TypeSpan({ ...type }) {
+function TypeSpan({ onClick, ...type }) {
+  const { name, color } = type;
+
   return (
     <div>
       <a
         className="type-filter-span"
+        onClick={() => {
+          onClick(name, color);
+        }}
         style={{ backgroundColor: type.color }}
       >
         {type.name}
@@ -12,5 +18,9 @@ function TypeSpan({ ...type }) {
     </div>
   );
 }
+
+TypeSpan.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default TypeSpan;

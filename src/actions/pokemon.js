@@ -3,6 +3,7 @@ export const SAVE_POKEMONS = 'SAVE_POKEMONS';
 export const CHANGE_FILTER_FIELD = 'CHANGE_FILTER_FIELD';
 export const FETCH_TYPES = 'FETCH_TYPES';
 export const SAVE_TYPES = 'SAVE_TYPES';
+export const SELECT_TYPE_FILTERS = 'SELECT_TYPE_FILTERS';
 
 export const fetchPokemons = () => ({
   type: FETCH_POKEMONS,
@@ -26,3 +27,9 @@ export const saveTypes = (types) => ({
   type: SAVE_TYPES,
   types: types,
 });
+
+export const selectTypeFilters = (newValue) => ({
+  type: SELECT_TYPE_FILTERS,
+  newValue: newValue,
+});
+

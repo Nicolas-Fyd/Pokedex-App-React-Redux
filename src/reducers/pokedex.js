@@ -1,9 +1,16 @@
-import { CHANGE_FILTER_FIELD, SAVE_POKEMONS, SAVE_TYPES } from '../actions/pokemon';
+import {
+  CHANGE_FILTER_FIELD,
+  SAVE_POKEMONS,
+  SAVE_TYPES,
+  SAVE_TYPE_FILTERS,
+  SELECT_TYPE_FILTERS,
+} from '../actions/pokemon';
 
 export const initialState = {
   pokemons: [],
   pokemonFilterName: '',
   types: [],
+  filteredTypes: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -22,6 +29,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         types: action.types,
+      };
+    case SELECT_TYPE_FILTERS:
+      return {
+        ...state,
+        filteredTypes: [...state.filteredTypes, action.newValue],
       };
     default:
       return state;
