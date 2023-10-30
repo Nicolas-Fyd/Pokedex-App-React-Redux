@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import TypeSpan from './TypeSpan';
 import './styles.scss';
-import { selectTypeFilters } from '../../actions/pokemon';
+import { deleteTypeFilters, selectTypeFilters } from '../../actions/pokemon';
 
 function PokemonFilterByType({ types }) {
   const dispatch = useDispatch();
+  const filteredTypes = useSelector((state) => state.pokedex.filteredTypes);
 
   return (
     <div className="type-filter">
@@ -13,7 +14,11 @@ function PokemonFilterByType({ types }) {
         <TypeSpan
           key={type.id}
           onClick={(newValue) => {
-            dispatch(selectTypeFilters(newValue));
+            if (filteredTypes.includes(newValue)) {
+              dispatch(deleteTypeFilters(newValue));
+            } else {
+              dispatch(selectTypeFilters(newValue));
+            }
           }}
           {...type}
         />

@@ -32,7 +32,7 @@ function Home() {
       // Filtrer par nom si le nom est défini
       const nameMatches = !filterName || pokemon.name.toLowerCase().includes(filterName);
       // Filtrer par type si des types sont sélectionnés
-      const typesMatch = filteredTypes.length === 0 || filteredTypes.every((selectedType) =>pokemon.types.some((type) => type.name.toLowerCase() === selectedType.toLowerCase()));
+      const typesMatch = filteredTypes.length === 0 || filteredTypes.every((selectedType) => pokemon.types.some((type) => type.name.toLowerCase() === selectedType.toLowerCase()));
       // Le Pokémon sera inclus s'il correspond au nom et aux types
       return nameMatches && typesMatch;
     });

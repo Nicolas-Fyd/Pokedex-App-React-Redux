@@ -1,5 +1,6 @@
 import {
   CHANGE_FILTER_FIELD,
+  DELETE_TYPE_FILTERS,
   SAVE_POKEMONS,
   SAVE_TYPES,
   SAVE_TYPE_FILTERS,
@@ -34,6 +35,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         filteredTypes: [...state.filteredTypes, action.newValue],
+      };
+    case DELETE_TYPE_FILTERS:
+      return {
+        ...state,
+        filteredTypes: [...state.filteredTypes.filter(type => type !== action.newValue)],
       };
     default:
       return state;

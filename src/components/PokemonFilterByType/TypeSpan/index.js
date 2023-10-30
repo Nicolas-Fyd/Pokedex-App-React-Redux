@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
+import { useSelector } from 'react-redux';
 
 function TypeSpan({ onClick, ...type }) {
-  const { name, color } = type;
+  const filteredTypes = useSelector((state) => state.pokedex.filteredTypes);
+  const { name } = type;
+
+  const isTypeSelected = filteredTypes.includes(name);
 
   return (
     <div>
       <a
-        className="type-filter-span"
+        className={isTypeSelected ? 'type-filter-span-selected' : 'type-filter-span'}
         onClick={() => {
-          onClick(name, color);
+          onClick(name);
         }}
         style={{ backgroundColor: type.color }}
       >
