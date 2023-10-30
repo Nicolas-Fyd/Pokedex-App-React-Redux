@@ -7,6 +7,14 @@
   border-radius: 30px;
   margin: 0.5rem;
 
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 40%;
+  }
+
+  @media (max-width: 480px) {
+    width: 80%;
+  }
+
   .pokemon-img {
     width: 60%;
     height: 60%;
