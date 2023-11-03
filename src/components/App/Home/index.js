@@ -1,26 +1,20 @@
 /* eslint-disable no-shadow */
 /* eslint-disable arrow-body-style */
 /* eslint-disable max-len */
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Content from './Content';
 import './styles.scss';
-import { changeFilterField, fetchPokemons, fetchTypes } from '../../../actions/pokemon';
+import { changeFilterField } from '../../../actions/pokemon';
 import PokemonFilterByName from './PokemonFilterByName';
 import PokemonFilterByType from './PokemonFilterByType';
 
 function Home() {
+  const dispatch = useDispatch();
+
   const pokemons = useSelector((state) => state.pokedex.pokemons);
   const filterName = useSelector((state) => state.pokedex.pokemonFilterName);
   const types = useSelector((state) => state.pokedex.types);
   const filteredTypes = useSelector((state) => state.pokedex.filteredTypes);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPokemons());
-    dispatch(fetchTypes());
-  }, [filteredTypes]);
 
   // Filtrer un tableau avec différents filtres
   const customFilter = (pokemons, filterName, filteredTypes) => {

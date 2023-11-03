@@ -12,6 +12,8 @@ export const initialState = {
   pokemonFilterName: '',
   types: [],
   filteredTypes: [],
+  isPokemonsLoaded: false,
+  isTypesLoaded: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -20,6 +22,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         pokemons: action.pokemons,
+        isPokemonsLoaded: true,
       };
     case CHANGE_FILTER_FIELD:
       return {
@@ -30,6 +33,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         types: action.types,
+        isTypesLoaded: true,
       };
     case SELECT_TYPE_FILTERS:
       return {
