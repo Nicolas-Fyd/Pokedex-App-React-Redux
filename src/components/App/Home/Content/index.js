@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Pokemon from '../Pokemon';
+import Pokemon from './Pokemon';
 import './styles.scss';
 
 function Content({ pokemons }) {

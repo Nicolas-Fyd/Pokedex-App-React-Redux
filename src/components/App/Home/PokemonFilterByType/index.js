@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import TypeSpan from './TypeSpan';
 import './styles.scss';
-import { deleteTypeFilters, selectTypeFilters } from '../../actions/pokemon';
+import { deleteTypeFilters, selectTypeFilters } from '../../../../actions/pokemon';
 
 function PokemonFilterByType({ types }) {
   const dispatch = useDispatch();

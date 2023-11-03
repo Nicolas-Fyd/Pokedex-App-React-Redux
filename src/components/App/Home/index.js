@@ -3,11 +3,11 @@
 /* eslint-disable max-len */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Content from '../Content';
+import Content from './Content';
 import './styles.scss';
-import { changeFilterField, fetchPokemons, fetchTypes } from '../../actions/pokemon';
-import PokemonFilterByName from '../PokemonFilterByName';
-import PokemonFilterByType from '../PokemonFilterByType';
+import { changeFilterField, fetchPokemons, fetchTypes } from '../../../actions/pokemon';
+import PokemonFilterByName from './PokemonFilterByName';
+import PokemonFilterByType from './PokemonFilterByType';
 
 function Home() {
   const pokemons = useSelector((state) => state.pokedex.pokemons);
