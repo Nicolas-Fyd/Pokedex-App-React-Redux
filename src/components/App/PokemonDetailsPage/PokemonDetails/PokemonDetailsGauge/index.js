@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import './styles.scss';
 
+// eslint-disable-next-line react/prop-types
 function PokemonDetailsGauge({ value }) {
   const [progress, setProgress] = React.useState(0);
   const value255scale = (value * 100) / 255;
@@ -50,8 +51,8 @@ function PokemonDetailsGauge({ value }) {
   );
 }
 
-PokemonDetailsGauge.propTypes = {
-  value: PropTypes.number.isRequired,
-};
+// PokemonDetailsGauge.propTypes = {
+//   value: PropTypes.number.isRequired,
+// };
 
 export default PokemonDetailsGauge;

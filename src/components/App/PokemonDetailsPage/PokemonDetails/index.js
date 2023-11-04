@@ -25,7 +25,7 @@ function PokemonDetailsPage({ pokemon }) {
           <div className="pokemon-details-statistics">
             {Object.keys(pokemon.stats).map((statName) => (
               <div className="pokemon-details-statistics-bloc" key={statName}>
-                <span className="pokemon-details-statistic-name">{statName}</span>
+                <span className="pokemon-details-statistic-name">{statName.charAt(0).toUpperCase() + statName.slice(1)}</span>
                 <PokemonDetailsGauge value={pokemon.stats[statName]} />
               </div>
             ))}
