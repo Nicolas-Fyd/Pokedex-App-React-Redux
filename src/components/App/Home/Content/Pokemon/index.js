@@ -3,7 +3,7 @@ import './styles.scss';
 function Pokemon({ ...pokemon }) {
   return (
     <div className="pokemon">
-      <img className="pokemon-img" src={pokemon.image} alt="Bulbizarre" />
+      <img className="pokemon-img" src={pokemon.image} alt={pokemon.name} />
       <div className="pokemon-name">#{pokemon.id } {pokemon.name}</div>
       <div className="pokemon-types">
         {pokemon.types.map((type) => (

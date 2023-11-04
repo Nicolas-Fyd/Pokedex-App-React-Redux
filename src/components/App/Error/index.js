@@ -1,12 +1,9 @@
-import Header from '../Header';
-import ErrorMessage from './ErrorMessage';
 import './styles.scss';
 
 function Error() {
   return (
     <div className="error-page">
-      <Header />
-      <ErrorMessage />
+      <h1>Erreur</h1>
     </div>
   );
 }

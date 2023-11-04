@@ -1,6 +1,7 @@
 import './styles.scss';
 import { Navigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import PokemonDetails from './PokemonDetails';
 
 function PokemonDetailsPage() {
   const { name } = useParams();
@@ -8,13 +9,13 @@ function PokemonDetailsPage() {
   const pokemon = pokemons.find((poke) => poke.name.toLowerCase() === name.toLowerCase());
   console.log(pokemon);
 
-  // if (!pokemon) {
-  //   return <Navigate to="/error" replace />;
-  // }
+  if (!pokemon) {
+    return <Navigate to="/error" replace />;
+  }
 
   return (
-    <div className="pokemon-details">
-      Hello {pokemon.name}
+    <div className="pokemon-details-page">
+      <PokemonDetails pokemon={pokemon} />
     </div>
   );
 }
