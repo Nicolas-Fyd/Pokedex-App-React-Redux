@@ -19,7 +19,7 @@ function PokemonDetailsGauge({ value }) {
         }
         return prevProgress + 1;
       });
-    }, 50); // Intervalles plus courts pour une progression plus rapide
+    }, 80); // Intervalles plus courts pour une progression plus rapide
 
     return () => {
       clearInterval(timer);
@@ -34,7 +34,7 @@ function PokemonDetailsGauge({ value }) {
       <CircularProgress
         variant="determinate"
         value="100"
-        size={150}
+        size={100}
         thickness={7}
         className="circle-overlay"
         style={{ color: 'black', opacity: 0.5 }}
@@ -42,7 +42,7 @@ function PokemonDetailsGauge({ value }) {
       <CircularProgress
         variant="determinate"
         value={progress}
-        size={150}
+        size={100}
         thickness={7}
         className="circle-overlay"
         style={{ color: 'white' }}

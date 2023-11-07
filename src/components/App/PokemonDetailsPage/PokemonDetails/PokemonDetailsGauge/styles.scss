@@ -1,7 +1,10 @@
 .gauge-container {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .circle-background {
@@ -9,14 +12,17 @@
   height: 100%;
   border-radius: 50%;
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .circle-text {
   font-size: 1.25rem;
   font-weight: bold;
+  position: absolute;
+  top: 50%; /* Ajoutez cette ligne */
+  left: 50%; /* Ajoutez cette ligne */
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
 .circle-overlay {
