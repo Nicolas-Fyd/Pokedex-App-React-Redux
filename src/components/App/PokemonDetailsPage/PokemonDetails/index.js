@@ -3,6 +3,23 @@ import PokemonDetailsGauge from './PokemonDetailsGauge';
 import './styles.scss';
 
 function PokemonDetailsPage({ pokemon }) {
+  const mergedWeaknessAndResist = [];
+
+  pokemon.weakness_and_resist.forEach((entry) => {
+    const typeId = entry.typecoverage_id;
+
+    if (!mergedWeaknessAndResist[typeId]) {
+      mergedWeaknessAndResist[typeId] = {
+        typecoverage_id: typeId,
+        name_typecoverage: entry.name_typecoverage,
+        color_typecoverage: entry.color_typecoverage,
+        multiplier: entry.multiplier,
+      };
+    } else {
+      mergedWeaknessAndResist[typeId].multiplier *= entry.multiplier;
+    }
+  });
+
   return (
     <div className="pokemon-details">
       <h1 className="pokemon-details-title">Détails de {pokemon.name}</h1>
@@ -39,11 +56,86 @@ function PokemonDetailsPage({ pokemon }) {
           </div>
           <h3 className="pokemon-details-weakandresist-title">Résistances et faiblesses</h3>
           <div className="pokemon-details-weakandresist-array">
-            <h4 className="pokemon-details-weakandresist-name">Immunisé</h4>
-            <h4 className="pokemon-details-weakandresist-name">Très résistant</h4>
-            <h4 className="pokemon-details-weakandresist-name">Résistant</h4>
-            <h4 className="pokemon-details-weakandresist-name">Vulnérable</h4>
-            <h4 className="pokemon-details-weakandresist-name">Très vulnérable</h4>
+            <div className="pokemon-details-weakandresist-column">
+              <h4 className="pokemon-details-weakandresist-name">Immunité</h4>
+              <div className="pokemon-details-weakandresist-types">
+                {mergedWeaknessAndResist
+                  .filter((entry) => entry.multiplier === 0)
+                  .map((entry) => (
+                    <a
+                      key={entry.typecoverage_id}
+                      className="pokemon-details-weakandresist-type"
+                      style={{ backgroundColor: entry.color_typecoverage }}
+                    >
+                      {entry.name_typecoverage}
+                    </a>
+                  ))}
+              </div>
+            </div>
+            <div className="pokemon-details-weakandresist-column">
+              <h4 className="pokemon-details-weakandresist-name">Très résistant</h4>
+              <div className="pokemon-details-weakandresist-types">
+                {mergedWeaknessAndResist
+                  .filter((entry) => entry.multiplier === 0.25)
+                  .map((entry) => (
+                    <a
+                      key={entry.typecoverage_id}
+                      className="pokemon-details-weakandresist-type"
+                      style={{ backgroundColor: entry.color_typecoverage }}
+                    >
+                      {entry.name_typecoverage}
+                    </a>
+                  ))}
+              </div>
+            </div>
+            <div className="pokemon-details-weakandresist-column">
+              <h4 className="pokemon-details-weakandresist-name">Résistant</h4>
+              <div className="pokemon-details-weakandresist-types">
+                {mergedWeaknessAndResist
+                  .filter((entry) => entry.multiplier === 0.5)
+                  .map((entry) => (
+                    <a
+                      key={entry.typecoverage_id}
+                      className="pokemon-details-weakandresist-type"
+                      style={{ backgroundColor: entry.color_typecoverage }}
+                    >
+                      {entry.name_typecoverage}
+                    </a>
+                  ))}
+              </div>
+            </div>
+            <div className="pokemon-details-weakandresist-column">
+              <h4 className="pokemon-details-weakandresist-name">Vulnérable</h4>
+              <div className="pokemon-details-weakandresist-types">
+                {mergedWeaknessAndResist
+                  .filter((entry) => entry.multiplier === 2)
+                  .map((entry) => (
+                    <a
+                      key={entry.typecoverage_id}
+                      className="pokemon-details-weakandresist-type"
+                      style={{ backgroundColor: entry.color_typecoverage }}
+                    >
+                      {entry.name_typecoverage}
+                    </a>
+                  ))}
+              </div>
+            </div>
+            <div className="pokemon-details-weakandresist-column">
+              <h4 className="pokemon-details-weakandresist-name">Très vulnérable</h4>
+              <div className="pokemon-details-weakandresist-types">
+                {mergedWeaknessAndResist
+                  .filter((entry) => entry.multiplier === 4)
+                  .map((entry) => (
+                    <a
+                      key={entry.typecoverage_id}
+                      className="pokemon-details-weakandresist-type"
+                      style={{ backgroundColor: entry.color_typecoverage }}
+                    >
+                      {entry.name_typecoverage}
+                    </a>
+                  ))}
+              </div>
+            </div>
           </div>
           <h3 className="pokemon-details-weakandresist-title">Evolutions</h3>
         </div>
@@ -73,7 +165,24 @@ PokemonDetailsPage.propTypes = {
         color: PropTypes.string.isRequired,
       }).isRequired,
     ),
+    evolution: PropTypes.arrayOf(
+      PropTypes.shape({
+        state: PropTypes.string.isRequired,
+        evolutionId: PropTypes.string.isRequired,
+        condition: PropTypes.string.isRequired,
+      }).isRequired,
+    ),
     image: PropTypes.string.isRequired,
+    sprite: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    weakness_and_resist: PropTypes.arrayOf(
+      PropTypes.shape({
+        typecoverage_id: PropTypes.number.isRequired,
+        name_typecoverage: PropTypes.string.isRequired,
+        color_typecoverage: PropTypes.string.isRequired,
+        multiplier: PropTypes.number.isRequired,
+      }).isRequired,
+    ),
   }),
 };
 

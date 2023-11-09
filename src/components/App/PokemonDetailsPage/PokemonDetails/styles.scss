@@ -102,6 +102,14 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.pokemon-details-weakandresist-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 19%;
 }
 
 .pokemon-details-weakandresist-name {
@@ -111,6 +119,22 @@
   padding: 0.5rem;
   background-color: vars.$darkerColor;
   border-radius: 0.5rem;
+}
+
+.pokemon-details-weakandresist-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+}
+
+.pokemon-details-weakandresist-type {
+  font-weight: bold;
+  margin: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 45%;
+  text-align: center;
 }
 
 .pokemon-details-weakandresist-title {
