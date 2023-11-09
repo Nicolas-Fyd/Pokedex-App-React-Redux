@@ -40,20 +40,21 @@ function PokemonDetailsPage({ pokemon }) {
           </div>
         </div>
         <div className="pokemon-details-right">
-          <h2 className="pokemon-details-right-title">#{pokemon.id} {pokemon.name}</h2>
-          <div className="pokemon-details-description">{pokemon.description}</div>
-          <h3 className="pokemon-details-types-title">Types</h3>
-          <div className="pokemon-details-right-types">
-            {pokemon.types.map((type) => (
-              <a
-                key={type.color}
-                className="pokemon-details-right-type"
-                style={{ backgroundColor: type.color }}
-              >
-                {type.name}
-              </a>
-            ))}
+          <div className="pokemon-details-right-top">
+            <h2 className="pokemon-details-right-title">#{pokemon.id} {pokemon.name}</h2>
+            <div className="pokemon-details-right-types">
+              {pokemon.types.map((type) => (
+                <a
+                  key={type.color}
+                  className="pokemon-details-right-type"
+                  style={{ backgroundColor: type.color }}
+                >
+                  {type.name}
+                </a>
+              ))}
+            </div>
           </div>
+          <div className="pokemon-details-description">{pokemon.description}</div>
           <h3 className="pokemon-details-weakandresist-title">Résistances et faiblesses</h3>
           <div className="pokemon-details-weakandresist-array">
             <div className="pokemon-details-weakandresist-column">
