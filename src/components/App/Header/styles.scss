@@ -6,6 +6,10 @@
   display: flex;
   justify-content: space-between;
 
+  .logo {
+    height: 100%;
+  }
+  
   .form {
     display: flex;
     margin: auto;

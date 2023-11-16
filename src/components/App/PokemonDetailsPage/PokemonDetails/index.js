@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import PokemonDetailsGauge from './PokemonDetailsGauge';
 import './styles.scss';
+import PokemonDetailsArrow from './PokemonDetailsArrow';
 
 function PokemonDetailsPage({ pokemon }) {
   const mergedWeaknessAndResist = [];
@@ -15,14 +16,14 @@ function PokemonDetailsPage({ pokemon }) {
         color_typecoverage: entry.color_typecoverage,
         multiplier: entry.multiplier,
       };
-    } else {
+    }
+    else {
       mergedWeaknessAndResist[typeId].multiplier *= entry.multiplier;
     }
   });
 
   return (
     <div className="pokemon-details">
-      <h1 className="pokemon-details-title">Détails de {pokemon.name}</h1>
       <div className="pokemon-details-div">
         <div className="pokemons-details-left">
           <img src={pokemon.image} alt={pokemon.name} className="pokemon-details-img" />
@@ -138,7 +139,93 @@ function PokemonDetailsPage({ pokemon }) {
               </div>
             </div>
           </div>
-          <h3 className="pokemon-details-weakandresist-title">Evolutions</h3>
+          {/* EVOLUTIONS  */}
+          {pokemon.evolution && /* pokemon.evolution.length && */ (
+            <div className="pokemon-details-evolutions">
+              <h3 className="pokemon-details-evolutions-title">Evolutions</h3>
+              {/* POKEMON SANS EVOLUTION PRECEDENTE */}
+                {!pokemon.evolution.find((evo) => evo.state === 'prev') && (
+                  <div className="pokemon-details-evolutions-content">
+                    <div className="pokemon-details-evolutions-bloc">
+                      <div className="pokemon-details-evolution">
+                        <img src={pokemon.thumbnail} alt={pokemon.name} className="pokemon-details-evolution-img" />
+                        <div className="pokemon-details-evolution-name">{pokemon.name}</div>
+                      </div>
+                    </div>
+                    <PokemonDetailsArrow />
+                    <div className="pokemon-details-evolutions-bloc">
+                      {pokemon.evolution.map((evo) => (
+                        <div className="pokemon-details-evolution" key={evo.evolutionName}>
+                          <a href={`/${evo.evolutionName}`}>
+                            <img src={`https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/${evo.evolutionId.toString().padStart(3, '0')}.png`} alt={evo.evolutionName} className="pokemon-details-evolution-img" />
+                          </a>
+                          <div className="pokemon-details-evolution-name">{evo.evolutionName}</div>
+                          <div className="pokemon-details-evolution-condition">{evo.condition}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {/* POKEMON SANS EVOLUTION SUIVANTE */}
+                {!pokemon.evolution.find((evo) => evo.state === 'next') && (
+                  <div className="pokemon-details-evolutions-content">
+                    <div className="pokemon-details-evolutions-bloc">
+                      {pokemon.evolution.map((evo) => (
+                        <div className="pokemon-details-evolution" key={evo.evolutionName}>
+                          <a href={`/${evo.evolutionName}`}>
+                            <img src={`https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/${evo.evolutionId.toString().padStart(3, '0')}.png`} alt={evo.evolutionName} className="pokemon-details-evolution-img" />
+                          </a>
+                          <div className="pokemon-details-evolution-name">{evo.evolutionName}</div>
+                          <div className="pokemon-details-evolution-condition">{evo.condition}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <PokemonDetailsArrow />
+                    <div className="pokemon-details-evolutions-bloc">
+                      <div className="pokemon-details-evolution">
+                        <img src={pokemon.thumbnail} alt={pokemon.name} className="pokemon-details-evolution-img" />
+                        <div className="pokemon-details-evolution-name">{pokemon.name}</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {/* POKEMON AVEC EVOLUTION PRECEDENTE ET SUIVANTE */}
+                {pokemon.evolution.find((evo) => evo.state === 'next') && pokemon.evolution.find((evo) => evo.state === 'prev') && (
+                  <div className="pokemon-details-evolutions-content">
+                    <div className="pokemon-details-evolutions-bloc">
+                      {pokemon.evolution.filter((evo) => evo.state === 'prev').map((evo) => (
+                        <div className="pokemon-details-evolution" key={evo.evolutionName}>
+                          <a href={`/${evo.evolutionName}`}>
+                            <img src={`https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/${evo.evolutionId.toString().padStart(3, '0')}.png`} alt={evo.evolutionName} className="pokemon-details-evolution-img" />
+                          </a>
+                          <div className="pokemon-details-evolution-name">{evo.evolutionName}</div>
+                          <div className="pokemon-details-evolution-condition">{evo.condition}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <PokemonDetailsArrow />
+                    <div className="pokemon-details-evolutions-bloc">
+                      <div className="pokemon-details-evolution">
+                        <img src={pokemon.thumbnail} alt={pokemon.name} className="pokemon-details-evolution-img" />
+                        <div className="pokemon-details-evolution-name">{pokemon.name}</div>
+                      </div>
+                    </div>
+                    <PokemonDetailsArrow />
+                    <div className="pokemon-details-evolutions-bloc">
+                      {pokemon.evolution.filter((evo) => evo.state === 'next').map((evo) => (
+                        <div className="pokemon-details-evolution" key={evo.evolutionName}>
+                          <a href={`/${evo.evolutionName}`}>
+                            <img src={`https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/${evo.evolutionId.toString().padStart(3, '0')}.png`} alt={evo.evolutionName} className="pokemon-details-evolution-img" />
+                          </a>
+                          <div className="pokemon-details-evolution-name">{evo.evolutionName}</div>
+                          <div className="pokemon-details-evolution-condition">{evo.condition}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -170,6 +257,7 @@ PokemonDetailsPage.propTypes = {
       PropTypes.shape({
         state: PropTypes.string.isRequired,
         evolutionId: PropTypes.string.isRequired,
+        evolutionName: PropTypes.string.isRequired,
         condition: PropTypes.string.isRequired,
       }).isRequired,
     ),
