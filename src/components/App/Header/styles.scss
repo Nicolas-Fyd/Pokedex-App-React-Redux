@@ -5,18 +5,11 @@
   background-color: vars.$lightColor;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .logo {
     height: 100%;
+    width: 10vh;
   }
   
-  .form {
-    display: flex;
-    margin: auto;
-    margin-right: 2rem;
-
-    .login {
-      margin-right: 1rem;
-    }
-  }
 }

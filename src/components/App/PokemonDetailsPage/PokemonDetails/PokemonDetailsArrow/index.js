@@ -1,5 +1,4 @@
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import './styles.scss';
 
 function PokemonDetailsArrow() {
   return (

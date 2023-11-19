@@ -9,6 +9,8 @@ function PokemonDetailsPage({ pokemon }) {
   pokemon.weakness_and_resist.forEach((entry) => {
     const typeId = entry.typecoverage_id;
 
+    // eslint-disable-next-line max-len
+    // Si le typeId n'existe pas dans le tableau on l'insert sinon on multiplie le multiplier pour obtenir la resistance/faiblesse du double type
     if (!mergedWeaknessAndResist[typeId]) {
       mergedWeaknessAndResist[typeId] = {
         typecoverage_id: typeId,
@@ -56,6 +58,7 @@ function PokemonDetailsPage({ pokemon }) {
             </div>
           </div>
           <div className="pokemon-details-description">{pokemon.description}</div>
+          {/* RESISTANCES ET FAIBLESSES  */}
           <h3 className="pokemon-details-weakandresist-title">Résistances et faiblesses</h3>
           <div className="pokemon-details-weakandresist-array">
             <div className="pokemon-details-weakandresist-column">

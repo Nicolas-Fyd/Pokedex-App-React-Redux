@@ -1,5 +1,6 @@
-import './styles.scss';
 import logo from 'src/assets/logo2.png';
+import LoginForm from './LoginForm';
+import './styles.scss';
 
 function Header() {
   return (
@@ -7,10 +8,7 @@ function Header() {
       <a href="/">
         <img className="logo" src={logo} alt="react logo" />
       </a>
-      <div className="form">
-        <div className="login">Se connecter</div>
-        <div className="signin">S'inscrire</div>
-      </div>
+      <LoginForm />
     </div>
   );
 }
