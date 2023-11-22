@@ -43,7 +43,7 @@ const reducer = (state = initialState, action = {}) => {
     case DELETE_TYPE_FILTERS:
       return {
         ...state,
-        filteredTypes: [...state.filteredTypes.filter(type => type !== action.newValue)],
+        filteredTypes: [...state.filteredTypes.filter((type) => type !== action.newValue)],
       };
     default:
       return state;

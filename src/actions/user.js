@@ -1,6 +1,7 @@
 export const CHANGE_LOGIN_FIELD = 'CHANGE_LOGIN_FIELD';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SAVE_AUTH_DATA = 'SAVE_AUTH_DATA';
+export const DELETE_AUTH_DATA = 'DELETE_AUTH_DATA';
 
 export const changeLoginField = (newValue, identifier) => ({
   type: CHANGE_LOGIN_FIELD,
@@ -17,4 +18,8 @@ export const saveAuthData = (pseudo, roleId, accesstoken) => ({
   pseudo: pseudo,
   roleId: roleId,
   token: accesstoken,
+});
+
+export const deleteAuthData = () => ({
+  type: DELETE_AUTH_DATA,
 });

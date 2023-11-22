@@ -1,4 +1,4 @@
-import { CHANGE_LOGIN_FIELD, SAVE_AUTH_DATA } from '../actions/user';
+import { CHANGE_LOGIN_FIELD, DELETE_AUTH_DATA, SAVE_AUTH_DATA } from '../actions/user';
 
 export const initialState = {
   isLogged: false,
@@ -23,9 +23,17 @@ const reducer = (state = initialState, action = {}) => {
         pseudo: action.pseudo,
         roleId: action.roleId,
         token: action.token,
-        islogged: true,
+        isLogged: true,
         email: '',
         password: '',
+      };
+    case DELETE_AUTH_DATA:
+      return {
+        ...state,
+        pseudo: '',
+        roleId: null,
+        token: '',
+        isLogged: false,
       };
     default:
       return state;
