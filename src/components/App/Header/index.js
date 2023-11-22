@@ -2,11 +2,12 @@ import logo from 'src/assets/logo2.png';
 import { useSelector, useDispatch } from 'react-redux';
 import LoginForm from './LoginForm';
 import './styles.scss';
-import { changeLoginField } from '../../../actions/user';
+import { changeLoginField, submitLogin } from '../../../actions/user';
 
 function Header() {
   const email = useSelector((state) => state.user.email);
   const password = useSelector((state) => state.user.password);
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   const dispatch = useDispatch();
 
@@ -22,12 +23,13 @@ function Header() {
           dispatch(changeLoginField(newValue, identifier));
         }}
         handleLogin={() => {
-          console.log('handleLogin');
+          dispatch(submitLogin());
         }}
         handleLogout={() => {
           console.log('handleLogout');
         }}
-       />
+        isLogged={isLogged}
+      />
     </div>
   );
 }
