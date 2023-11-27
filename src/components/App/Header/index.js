@@ -5,10 +5,9 @@ import './styles.scss';
 import { changeLoginField, deleteAuthData, submitLogin } from '../../../actions/user';
 
 function Header() {
-  const email = useSelector((state) => state.user.email);
-  const password = useSelector((state) => state.user.password);
-  const isLogged = useSelector((state) => state.user.isLogged);
-  const pseudo = useSelector((state) => state.user.pseudo);
+  const {
+    email, password, isLogged, pseudo,
+  } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 

@@ -8,6 +8,7 @@ import './styles.scss';
 import PokemonDetailsPage from './PokemonDetailsPage';
 import { fetchPokemons, fetchTypes } from '../../actions/pokemon';
 import Loading from './Loading';
+import SignUp from './SignUp';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="sign-up" element={<SignUp />} />
         <Route path="/:name" element={<PokemonDetailsPage />} />
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<Error />} />

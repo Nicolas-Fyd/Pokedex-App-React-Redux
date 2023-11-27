@@ -1,0 +1,32 @@
+@use 'src/styles/vars';
+
+.signup-form {
+  
+  
+  &-element {
+    width: 30%;
+    margin: 3rem auto;
+  }
+
+  &-message {
+    margin: .3em 1em;
+  }
+
+  &-logged {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &-button {
+    font-size: 1em;
+    color: #fff;
+    background-color: vars.$mainColor;
+    border-radius: .3em;
+    border: 0;
+    padding: .7em;
+    height: 2.5em;
+    margin-top: 2rem;
+    border: white solid 2px;
+  }
+}
