@@ -11,6 +11,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         errorMessage: action.errorMessage,
       };
+    case 'CLEAR_ERROR_MESSAGE':
+      return {
+        ...state,
+        errorMessage: '',
+      };
     default:
       return state;
   }
