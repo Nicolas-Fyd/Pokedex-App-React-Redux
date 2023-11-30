@@ -5,6 +5,8 @@ export const DELETE_AUTH_DATA = 'DELETE_AUTH_DATA';
 export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
 export const SAVE_SIGNUP_INFORMATIONS = 'SAVE_SIGNUP_INFORMATIONS';
 export const DELETE_SIGNUP_INFORMATIONS = 'DELETE_SIGNUP_INFORMATIONS';
+export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
+export const RESET_SUBMIT_SUCCESS = 'RESET_SUBMIT_SUCCESS';
 
 export const changeLoginField = (newValue, identifier) => ({
   type: CHANGE_LOGIN_FIELD,
@@ -38,4 +40,12 @@ export const submitSignup = () => ({
 
 export const deleteSignupInformations = () => ({
   type: DELETE_SIGNUP_INFORMATIONS,
+});
+
+export const submitSuccess = () => ({
+  type: SUBMIT_SUCCESS,
+});
+
+export const resetSubmitSuccess = () => ({
+  type: RESET_SUBMIT_SUCCESS,
 });

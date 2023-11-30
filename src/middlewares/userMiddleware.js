@@ -1,7 +1,7 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable max-len */
 import axios from 'axios';
-import { SUBMIT_LOGIN, SUBMIT_SIGNUP, deleteSignupInformations, saveAuthData } from '../actions/user';
+import { SUBMIT_LOGIN, SUBMIT_SIGNUP, deleteSignupInformations, saveAuthData, submitSuccess } from '../actions/user';
 import { saveErrorMessage } from '../actions/apiMessage';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -31,6 +31,7 @@ const userMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           store.dispatch(deleteSignupInformations());
+          store.dispatch(submitSuccess());
           console.log('Compte créé');
         })
         .catch((error) => {

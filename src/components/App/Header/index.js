@@ -2,7 +2,7 @@
 import logo from 'src/assets/logo2.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import './styles.scss';
 import { changeLoginField, deleteAuthData, submitLogin } from '../../../actions/user';
@@ -16,20 +16,12 @@ function Header() {
   const errorMessage = useSelector((state) => state.error.errorMessage);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
 
   // Efface le message d'erreur lorsque l'URL change
   useEffect(() => {
-    const unlisten = navigate(() => {
-      dispatch(clearErrorMessage());
-    });
-
-    // Nettoyage de l'écouteur lorsque le composant est démonté
-    return () => {
-      unlisten();
-    };
-  }, [navigate, location.pathname]); // ajout de location.pathname pour exclure le composant si l'utilisateur est sur la route /sign-up
+    dispatch(clearErrorMessage());
+  }, [location.pathname]); // ajout de location.pathname pour dispatch clearErrorMessage si il y a un chagement d'url + exclure le composant si l'utilisateur est sur la route /sign-up
 
   return (
     <div className="header">
@@ -53,7 +45,7 @@ function Header() {
           isLogged={isLogged}
           loggedMessage={`Bienvenue ${pseudo}`}
         />
-        <a href="/sign-up" className="registration">Pas encore inscrit ?</a>
+        { !pseudo && <a href="/sign-up" className="registration">Pas encore inscrit ?</a>}
       </div>
     </div>
   );
