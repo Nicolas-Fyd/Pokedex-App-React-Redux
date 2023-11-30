@@ -18,6 +18,7 @@ const userMiddleware = (store) => (next) => (action) => {
           store.dispatch(saveAuthData(response.data.pseudo, response.data.role_id, response.data.accessToken));
         })
         .catch((error) => {
+          store.dispatch(saveErrorMessage(error.response.data));
           console.warn(error);
         });
       break;
