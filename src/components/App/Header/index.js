@@ -16,21 +16,24 @@ function Header() {
       <a href="/">
         <img className="logo" src={logo} alt="react logo" />
       </a>
-      <LoginForm
-        email={email}
-        password={password}
-        changeField={(newValue, identifier) => {
-          dispatch(changeLoginField(newValue, identifier));
-        }}
-        handleLogin={() => {
-          dispatch(submitLogin());
-        }}
-        handleLogout={() => {
-          dispatch(deleteAuthData());
-        }}
-        isLogged={isLogged}
-        loggedMessage={`Bienvenue ${pseudo}`}
-      />
+      <div className="connexion">
+        <LoginForm
+          email={email}
+          password={password}
+          changeField={(newValue, identifier) => {
+            dispatch(changeLoginField(newValue, identifier));
+          }}
+          handleLogin={() => {
+            dispatch(submitLogin());
+          }}
+          handleLogout={() => {
+            dispatch(deleteAuthData());
+          }}
+          isLogged={isLogged}
+          loggedMessage={`Bienvenue ${pseudo}`}
+        />
+        <a href="/sign-up" className="registration">Pas encore inscrit ?</a>
+      </div>
     </div>
   );
 }
