@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import logo from 'src/assets/logo2.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import './styles.scss';
 import { changeLoginField, deleteAuthData, submitLogin } from '../../../actions/user';
@@ -16,6 +17,7 @@ function Header() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Efface le message d'erreur lorsque l'URL change
   useEffect(() => {
@@ -27,14 +29,14 @@ function Header() {
     return () => {
       unlisten();
     };
-  }, [navigate]);
+  }, [navigate, location.pathname]); // ajout de location.pathname pour exclure le composant si l'utilisateur est sur la route /sign-up
 
   return (
     <div className="header">
       <a href="/">
         <img className="logo" src={logo} alt="react logo" />
       </a>
-      { errorMessage && <ErrorMessage severity="error" message={errorMessage} />}
+      { location.pathname !== '/sign-up' && errorMessage && <ErrorMessage severity="error" message={errorMessage} />}
       <div className="connexion">
         <LoginForm
           email={email}
