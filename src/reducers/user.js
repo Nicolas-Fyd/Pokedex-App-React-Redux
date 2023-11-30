@@ -1,4 +1,4 @@
-import { CHANGE_LOGIN_FIELD, CHANGE_SUBMIT_FIELD, DELETE_AUTH_DATA, SAVE_AUTH_DATA } from '../actions/user';
+import { CHANGE_LOGIN_FIELD, DELETE_AUTH_DATA, DELETE_SIGNUP_INFORMATIONS, SAVE_AUTH_DATA, SAVE_SIGNUP_INFORMATIONS } from '../actions/user';
 
 export const initialState = {
   isLogged: false,
@@ -7,10 +7,7 @@ export const initialState = {
   pseudo: '',
   token: '',
   roleId: null,
-  signUpPseudo: '',
-  signUpEmail: '',
-  signUpPassword: '',
-  signUpConfirmpassword: '',
+  dataSignUp: null,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -39,10 +36,15 @@ const reducer = (state = initialState, action = {}) => {
         token: '',
         isLogged: false,
       };
-    case CHANGE_SUBMIT_FIELD:
+    case SAVE_SIGNUP_INFORMATIONS:
       return {
         ...state,
-        [action.identifier]: action.newValue,
+        dataSignUp: action.dataSignUp,
+      };
+    case DELETE_SIGNUP_INFORMATIONS:
+      return {
+        ...state,
+        dataSignUp: null,
       };
     default:
       return state;

@@ -1,6 +1,8 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable max-len */
 import axios from 'axios';
-import { SUBMIT_LOGIN, SUBMIT_SIGNUP, saveAuthData } from '../actions/user';
+import { SUBMIT_LOGIN, SUBMIT_SIGNUP, deleteSignupInformations, saveAuthData } from '../actions/user';
+import { saveErrorMessage } from '../actions/apiMessage';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -20,25 +22,18 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       break;
     case SUBMIT_SIGNUP:
-      const {
-        signUpPseudo,
-        signUpEmail,
-        signUpPassword,
-        signUpConfirmpassword,
-      } = store.getState().user;
+      const datas = store.getState().user.dataSignUp;
+      console.log(datas);
       axios.post(
         'http://localhost:3000/sign-up',
-        {
-          pseudo: signUpPseudo,
-          email: signUpEmail,
-          password: signUpPassword,
-          confirmpassword: signUpConfirmpassword,
-        },
+        datas,
       )
         .then((response) => {
+          store.dispatch(deleteSignupInformations());
           console.log('Compte créé');
         })
         .catch((error) => {
+          store.dispatch(saveErrorMessage(error.response.data));
           console.warn(error);
         });
       break;

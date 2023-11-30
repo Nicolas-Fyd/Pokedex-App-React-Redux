@@ -1,29 +1,17 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { changeSubmitField, submitSignup } from '../../../actions/user';
 import SignUpForm from './SignUpForm';
 import './styles.scss';
-import { useSelector, useDispatch } from 'react-redux';
+import ErrorMessage from '../ErrorMessage';
+import SignUpFormBis from './SignUpFormBis';
 
 function SignUp() {
-  const {
-    signUpPseudo, signUpEmail, signUpPassword, signUpConfirmpassword,
-  } = useSelector((state) => state.user);
-
-  const dispatch = useDispatch();
+  const errorMessage = useSelector((state) => state.error.errorMessage);
 
   return (
     <div className="sign-up">
-      <SignUpForm
-        pseudo={signUpPseudo}
-        email={signUpEmail}
-        password={signUpPassword}
-        confirmPassword={signUpConfirmpassword}
-        changeField={(newValue, identifier) => {
-          dispatch(changeSubmitField(newValue, identifier));
-        }}
-        handleSignUp={() => {
-          dispatch(submitSignup());
-        }}
-      />
+      <SignUpFormBis />
+      { errorMessage && <ErrorMessage severity="error" message={errorMessage} />}
     </div>
   );
 }

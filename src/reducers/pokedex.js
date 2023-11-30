@@ -3,7 +3,6 @@ import {
   DELETE_TYPE_FILTERS,
   SAVE_POKEMONS,
   SAVE_TYPES,
-  SAVE_TYPE_FILTERS,
   SELECT_TYPE_FILTERS,
 } from '../actions/pokemon';
 
