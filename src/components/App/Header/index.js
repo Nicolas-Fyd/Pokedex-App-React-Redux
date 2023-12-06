@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-import logo from 'src/assets/logo2.png';
+import logo from 'src/assets/logo.png';
+import pokeball from 'src/assets/pokeball.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -29,23 +30,30 @@ function Header() {
         <img className="logo" src={logo} alt="react logo" />
       </a>
       { location.pathname !== '/sign-up' && errorMessage && <ErrorMessage severity="error" message={errorMessage} />}
-      <div className="connexion">
-        <LoginForm
-          email={email}
-          password={password}
-          changeField={(newValue, identifier) => {
-            dispatch(changeLoginField(newValue, identifier));
-          }}
-          handleLogin={() => {
-            dispatch(submitLogin());
-          }}
-          handleLogout={() => {
-            dispatch(deleteAuthData());
-          }}
-          isLogged={isLogged}
-          loggedMessage={`Bienvenue ${pseudo}`}
-        />
-        { !pseudo && <a href="/sign-up" className="registration">Pas encore inscrit ?</a>}
+      <div className="right-header">
+        { pseudo && (
+          <a href="/mon_equipe" title="Mon équipe">
+            <img className="pokeball" src={pokeball} alt="pokeball logo" />
+          </a>
+        )}
+        <div className="connexion">
+          <LoginForm
+            email={email}
+            password={password}
+            changeField={(newValue, identifier) => {
+              dispatch(changeLoginField(newValue, identifier));
+            }}
+            handleLogin={() => {
+              dispatch(submitLogin());
+            }}
+            handleLogout={() => {
+              dispatch(deleteAuthData());
+            }}
+            isLogged={isLogged}
+            loggedMessage={`Bienvenue ${pseudo}`}
+          />
+          { !pseudo && <a href="/sign-up" className="registration">Pas encore inscrit ?</a>}
+        </div>
       </div>
     </div>
   );

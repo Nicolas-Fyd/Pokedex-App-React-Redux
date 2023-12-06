@@ -14,6 +14,20 @@
   
 }
 
+.right-header {
+  display: flex;
+}
+
+.pokeball {
+  height: 30px;
+  width: 30px;
+  transition: transform 0.3s ease;
+}
+
+.pokeball:hover {
+  transform: scale(1.1) rotate(-15deg);
+}
+
 .connexion  {
   text-align: left;
 }
