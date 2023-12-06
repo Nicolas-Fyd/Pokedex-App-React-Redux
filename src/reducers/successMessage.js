@@ -1,20 +1,20 @@
-import { CLEAR_ERROR_MESSAGE, SAVE_ERROR_MESSAGE } from '../actions/apiMessage';
+import { CLEAR_SUCCESS_MESSAGE, SAVE_SUCCESS_MESSAGE } from "../actions/successMessage";
 
 const initialState = {
-  errorMessage: '',
+  successMessage: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case SAVE_ERROR_MESSAGE:
+    case SAVE_SUCCESS_MESSAGE:
       return {
         ...state,
-        errorMessage: action.errorMessage,
+        successMessage: action.successMessage,
       };
-    case CLEAR_ERROR_MESSAGE:
+    case CLEAR_SUCCESS_MESSAGE:
       return {
         ...state,
-        errorMessage: '',
+        successMessage: '',
       };
     default:
       return state;

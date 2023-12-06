@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './Header';
 import Home from './Home';
-import Error from './Error';
 import './styles.scss';
 import PokemonDetailsPage from './PokemonDetailsPage';
 import { fetchPokemons, fetchTypes } from '../../actions/pokemon';
@@ -31,7 +30,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="/:name" element={<PokemonDetailsPage />} />
-        <Route path="/error" element={<Error />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

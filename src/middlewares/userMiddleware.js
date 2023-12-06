@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { SUBMIT_LOGIN, SUBMIT_SIGNUP, deleteSignupInformations, saveAuthData, submitSuccess } from '../actions/user';
 import { saveErrorMessage } from '../actions/apiMessage';
+import { saveSuccessMessage } from '../actions/successMessage';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -29,10 +30,10 @@ const userMiddleware = (store) => (next) => (action) => {
         'http://localhost:3000/sign-up',
         datas,
       )
-        .then((response) => {
+        .then(() => {
           store.dispatch(deleteSignupInformations());
           store.dispatch(submitSuccess());
-          console.log('Compte créé');
+          store.dispatch(saveSuccessMessage('Votre compte a bien été créé'));
         })
         .catch((error) => {
           store.dispatch(saveErrorMessage(error.response.data));
