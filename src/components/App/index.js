@@ -14,6 +14,7 @@ function App() {
   const dispatch = useDispatch();
   const isPokemonsLoaded = useSelector((state) => state.pokedex.isPokemonsLoaded);
   const isTypesLoaded = useSelector((state) => state.pokedex.isTypesLoaded);
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   useEffect(() => {
     dispatch(fetchPokemons());
@@ -31,7 +32,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="/:name" element={<PokemonDetailsPage />} />
-        <Route path="/mon-equipe" element={<MyTeamPage />} />
+        {isLogged && <Route path="/mon-equipe" element={<MyTeamPage />} />}
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
