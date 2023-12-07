@@ -1,0 +1,28 @@
+.my-team {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 50%;
+  height: 70vh;
+  border: solid white 2px;
+  border-radius: 2rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.my-team-member {
+  width: 250px;
+  height: 250px;
+  border: solid white 1px;
+  border-radius: 2rem;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-team-member-img {
+  width: 200px;
+  height: 200px;
+}

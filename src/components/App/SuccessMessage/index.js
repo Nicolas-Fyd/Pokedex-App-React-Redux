@@ -19,7 +19,7 @@ export default function SuccessMessage({ message }) {
       dispatch(clearSuccessMessage());
     }, 5000);
 
-    // Nettoyer le timeout lorsqu'un composant est démonté ou lorsque l'utilisateur clique sur la croix
+    // Nettoyer le timeout lorsqu'un composant est démonté (timeout ou clic sur la croix)
     return () => clearTimeout(timeoutId);
   }, [dispatch]);
 

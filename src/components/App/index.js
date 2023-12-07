@@ -8,6 +8,7 @@ import PokemonDetailsPage from './PokemonDetailsPage';
 import { fetchPokemons, fetchTypes } from '../../actions/pokemon';
 import Loading from './Loading';
 import SignUp from './SignUp';
+import MyTeamPage from './MyTeamPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="/:name" element={<PokemonDetailsPage />} />
+        <Route path="/mon-equipe" element={<MyTeamPage />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

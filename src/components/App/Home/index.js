@@ -51,7 +51,6 @@ function Home() {
       />
       <Content pokemons={filterName.length === 0 && filteredTypes.length === 0 ? pokemons : filteredPokemons} /> {/* Si le filtre est vide on affiche tous les pokemons */}
       { successMessage && <SuccessMessage message={successMessage} />}
-      {/* <SuccessMessage message={successMessage} /> */}
     </div>
   );
 }

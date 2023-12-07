@@ -3,7 +3,7 @@ import logo from 'src/assets/logo.png';
 import pokeball from 'src/assets/pokeball.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import './styles.scss';
 import { changeLoginField, deleteAuthData, submitLogin } from '../../../actions/user';
@@ -26,15 +26,15 @@ function Header() {
 
   return (
     <div className="header">
-      <a href="/">
-        <img className="logo" src={logo} alt="react logo" />
-      </a>
+      <Link to="/">
+        <img className="logo" src={logo} alt="logo" />
+      </Link>
       { location.pathname !== '/sign-up' && errorMessage && <ErrorMessage severity="error" message={errorMessage} />}
       <div className="right-header">
         { pseudo && (
-          <a href="/mon_equipe" title="Mon équipe">
+          <Link to="/mon-equipe" title="Mon équipe">
             <img className="pokeball" src={pokeball} alt="pokeball logo" />
-          </a>
+          </Link>
         )}
         <div className="connexion">
           <LoginForm
