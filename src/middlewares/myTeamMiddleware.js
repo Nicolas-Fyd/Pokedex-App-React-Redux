@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { ADD_POKEMON_IN_MYTEAM, FETCH_MYTEAM, saveMyTeam } from '../actions/myTeam';
+import { saveErrorMessage } from '../actions/apiMessage';
+import { saveSuccessMessage } from '../actions/successMessage';
 
 const myTeamMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -19,10 +21,11 @@ const myTeamMiddleware = (store) => (next) => (action) => {
       axios.post('http://localhost:3000/me/collection', { pokemonId: pokemonId }, {
         headers: { Authorization: `Bearer ${store.getState().user.token}` },
       })
-        .then((response) => {
-          console.log('pokemon enregistré');
+        .then(() => {
+          store.dispatch(saveSuccessMessage('Le pokémon a bien été ajouté à votre équipe !'));
         })
         .catch((error) => {
+          store.dispatch(saveErrorMessage(error.response.data));
           console.warn(error);
         });
     }

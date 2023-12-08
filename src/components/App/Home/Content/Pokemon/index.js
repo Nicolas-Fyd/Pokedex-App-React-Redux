@@ -13,7 +13,7 @@ function Pokemon({ ...pokemon }) {
       {isLogged && (
       <div className="logo-container">
         <Link
-          to="/mon-equipe"
+          to="/"
           onClick={() => {
             dispatch(addPokemonInMyTeam(pokemon.id));
           }}
