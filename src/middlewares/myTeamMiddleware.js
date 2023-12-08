@@ -8,7 +8,6 @@ const myTeamMiddleware = (store) => (next) => (action) => {
         headers: { Authorization: `Bearer ${store.getState().user.token}` },
       })
         .then((response) => {
-          console.log(response.data);
           store.dispatch(saveMyTeam(response.data));
         })
         .catch((error) => {
