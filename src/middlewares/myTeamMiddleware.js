@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_MYTEAM, saveMyTeam } from '../actions/myTeam';
+import { ADD_POKEMON_IN_MYTEAM, FETCH_MYTEAM, saveMyTeam } from '../actions/myTeam';
 
 const myTeamMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -13,6 +13,19 @@ const myTeamMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.warn(error);
         });
+      break;
+    case ADD_POKEMON_IN_MYTEAM: {
+      const { pokemonId } = action;
+      axios.post('http://localhost:3000/me/collection', { pokemonId: pokemonId }, {
+        headers: { Authorization: `Bearer ${store.getState().user.token}` },
+      })
+        .then((response) => {
+          console.log('pokemon enregistré');
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+    }
       break;
     default:
   }

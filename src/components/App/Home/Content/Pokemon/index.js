@@ -1,16 +1,23 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import plus from 'src/assets/plus.png';
 import './styles.scss';
+import { addPokemonInMyTeam } from '../../../../../actions/myTeam';
 
 function Pokemon({ ...pokemon }) {
+  const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.user.isLogged);
 
   return (
     <div className="pokemon">
       {isLogged && (
       <div className="logo-container">
-        <Link to="/">
+        <Link
+          to="/mon-equipe"
+          onClick={() => {
+            dispatch(addPokemonInMyTeam(pokemon.id));
+          }}
+        >
           <img className="logo-img" src={plus} alt="Votre logo" />
         </Link>
       </div>
