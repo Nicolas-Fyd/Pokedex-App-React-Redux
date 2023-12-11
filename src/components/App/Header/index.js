@@ -3,7 +3,7 @@ import logo from 'src/assets/logo.png';
 import pokeball from 'src/assets/pokeball.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import './styles.scss';
 import { changeLoginField, deleteAuthData, submitLogin } from '../../../actions/user';
@@ -18,6 +18,7 @@ function Header() {
 
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Efface le message d'erreur lorsque l'URL change
   useEffect(() => {
@@ -48,6 +49,7 @@ function Header() {
             }}
             handleLogout={() => {
               dispatch(deleteAuthData());
+              navigate('/');
             }}
             isLogged={isLogged}
             loggedMessage={`Bienvenue ${pseudo}`}
