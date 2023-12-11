@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_POKEMON_IN_MYTEAM, FETCH_MYTEAM, saveMyTeam } from '../actions/myTeam';
+import { ADD_POKEMON_IN_MYTEAM, DELETE_POKEMON_IN_MYTEAM, FETCH_MYTEAM, saveMyTeam } from '../actions/myTeam';
 import { saveErrorMessage } from '../actions/apiMessage';
 import { saveSuccessMessage } from '../actions/successMessage';
 
@@ -23,6 +23,20 @@ const myTeamMiddleware = (store) => (next) => (action) => {
       })
         .then(() => {
           store.dispatch(saveSuccessMessage('Le pokémon a bien été ajouté à votre équipe !'));
+        })
+        .catch((error) => {
+          store.dispatch(saveErrorMessage(error.response.data));
+          console.warn(error);
+        });
+    }
+      break;
+    case DELETE_POKEMON_IN_MYTEAM: {
+      const { pokemonId } = action;
+      axios.delete(`http://localhost:3000/me/collection/${pokemonId}`, {
+        headers: { Authorization: `Bearer ${store.getState().user.token}` },
+      })
+        .then(() => {
+          store.dispatch(saveSuccessMessage('Le pokémon a bien été supprimé de votre équipe !'));
         })
         .catch((error) => {
           store.dispatch(saveErrorMessage(error.response.data));

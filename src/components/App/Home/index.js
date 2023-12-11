@@ -7,7 +7,6 @@ import './styles.scss';
 import { changeFilterField } from '../../../actions/pokemon';
 import PokemonFilterByName from './PokemonFilterByName';
 import PokemonFilterByType from './PokemonFilterByType';
-import SuccessMessage from '../SuccessMessage';
 
 function Home() {
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ function Home() {
   const filterName = useSelector((state) => state.pokedex.pokemonFilterName);
   const types = useSelector((state) => state.pokedex.types);
   const filteredTypes = useSelector((state) => state.pokedex.filteredTypes);
-  const successMessage = useSelector((state) => state.successMessage.successMessage);
 
   // Filtrer un tableau avec différents filtres
   const customFilter = (pokemons, filterName, filteredTypes) => {
@@ -50,7 +48,6 @@ function Home() {
         filteredTypes={filteredTypes}
       />
       <Content pokemons={filterName.length === 0 && filteredTypes.length === 0 ? pokemons : filteredPokemons} /> {/* Si le filtre est vide on affiche tous les pokemons */}
-      { successMessage && <SuccessMessage message={successMessage} />}
     </div>
   );
 }

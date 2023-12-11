@@ -9,12 +9,14 @@ import { fetchPokemons, fetchTypes } from '../../actions/pokemon';
 import Loading from './Loading';
 import SignUp from './SignUp';
 import MyTeamPage from './MyTeamPage';
+import SuccessMessage from './SuccessMessage';
 
 function App() {
   const dispatch = useDispatch();
   const isPokemonsLoaded = useSelector((state) => state.pokedex.isPokemonsLoaded);
   const isTypesLoaded = useSelector((state) => state.pokedex.isTypesLoaded);
   const isLogged = useSelector((state) => state.user.isLogged);
+  const successMessage = useSelector((state) => state.successMessage.successMessage);
 
   useEffect(() => {
     dispatch(fetchPokemons());
@@ -26,8 +28,10 @@ function App() {
   }
 
   return (
+
     <div className="app">
       <Header />
+      { successMessage && <SuccessMessage message={successMessage} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="sign-up" element={<SignUp />} />
