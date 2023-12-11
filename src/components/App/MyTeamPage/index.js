@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MyTeam from './MyTeam';
 import './styles.scss';
 import { fetchMyTeam } from '../../../actions/myTeam';
+import MyTeamWeaknesses from './MyTeamWeaknesses';
 
 function MyTeamPage() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function MyTeamPage() {
     <div className="my-team-page">
       <h1 className="my-team-page-title">Mon équipe</h1>
       <MyTeam myPokemons={myPokemons} />
+      <MyTeamWeaknesses myPokemons={myPokemons} />
     </div>
   );
 }
