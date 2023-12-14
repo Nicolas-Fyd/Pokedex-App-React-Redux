@@ -1,5 +1,5 @@
 .my-team-weaknesses {
-  margin-top: 2rem;
+  margin-top: 8rem;
 }
 
 .my-team-weaknesses-title {
@@ -7,11 +7,12 @@
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  margin-left: -2rem;
 }
 
 .my-team-weaknesses-type {
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .my-team-weaknesses-type-name {

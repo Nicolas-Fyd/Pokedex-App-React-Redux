@@ -16,8 +16,10 @@ function MyTeamPage() {
   return (
     <div className="my-team-page">
       <h1 className="my-team-page-title">Mon équipe</h1>
-      <MyTeam myPokemons={myPokemons} />
-      <MyTeamWeaknesses myPokemons={myPokemons} />
+      <div className="my-team-page-content">
+        <MyTeam myPokemons={myPokemons} />
+        <MyTeamWeaknesses myPokemons={myPokemons} />
+      </div>
     </div>
   );
 }

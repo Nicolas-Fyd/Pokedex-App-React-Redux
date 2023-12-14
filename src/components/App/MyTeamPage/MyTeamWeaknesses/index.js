@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 function MyTeamWeaknesses({ myPokemons }) {
   // Déclarer un tableau vide qui va nous servir à stocker les faiblesses x4
   const allWeaknesses = [];
-
   // Déclarer un tableau vide qui va nous servir à stocker le nom de la faiblesse et celui du Pokemon
   const typeAndPokemonNames = [];
 
@@ -79,6 +78,7 @@ function MyTeamWeaknesses({ myPokemons }) {
                     key={`${typeAndPokemon.typeName}-${matchingPokemon.id}`}
                     src={matchingPokemon.sprite}
                     alt={matchingPokemon.name}
+                    title={matchingPokemon.name}
                   />
                 );
               })}
