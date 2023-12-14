@@ -56,7 +56,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         submitSuccess: false,
-      }
+      };
     default:
       return state;
   }

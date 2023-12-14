@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import axios from 'axios';
 import { SUBMIT_LOGIN, SUBMIT_SIGNUP, deleteSignupInformations, saveAuthData, submitSuccess } from '../actions/user';
-import { saveErrorMessage } from '../actions/apiMessage';
+import { clearErrorMessage, saveErrorMessage } from '../actions/apiMessage';
 import { saveSuccessMessage } from '../actions/successMessage';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -17,6 +17,7 @@ const userMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           store.dispatch(saveAuthData(response.data.pseudo, response.data.role_id, response.data.accessToken));
+          store.dispatch(clearErrorMessage());
         })
         .catch((error) => {
           store.dispatch(saveErrorMessage(error.response.data));
