@@ -25,7 +25,7 @@ export default function SignUpForm() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" sx={{ backgroundColor: 'white', padding: '3rem', width: '60%' }}>
         <CssBaseline />
         <Box
           sx={{
@@ -33,6 +33,7 @@ export default function SignUpForm() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            padding: '0 3rem',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
