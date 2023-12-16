@@ -10,6 +10,7 @@ import Loading from './Loading';
 import SignUp from './SignUp';
 import MyTeamPage from './MyTeamPage';
 import SuccessMessage from './SuccessMessage';
+import Error from './Error';
 
 function App() {
   const dispatch = useDispatch();
